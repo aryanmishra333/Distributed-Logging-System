@@ -1,0 +1,50 @@
+All Kibana Commands
+
+elastic search clean:
+POST nodes_status/_delete_by_query
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+check node_registry:
+GET nodes_status/_search
+{
+  "query": {
+    "match_all": {}
+  },
+  "sort": [
+    {
+      "timestamp": {
+        "order": "asc"
+      }
+    }
+  ],
+  "size": 10
+}
+
+clean logs:
+POST log_data/_delete_by_query
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+check logs:
+GET log_data/_search
+{
+  "query": {
+    "match_all": {}
+  },
+  "sort": [
+    {
+      "timestamp": {
+        "order": "asc"
+      }
+    }
+  ],
+  "size": 10
+}
+
